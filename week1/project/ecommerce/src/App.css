@@ -1,0 +1,26 @@
+body{
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  margin: auto;
+  justify-content: center;
+}
+img{
+    display: flex;
+  align-items: center;
+  padding: 5px;
+  margin: auto;
+  justify-content: center;
+  width: 10rem;
+  height: 10rem;
+}
+nav{
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  margin: auto;
+  justify-content: center;
+  flex-direction: column ;
+  height: 11rem;
+  width: 100% ;
+}
