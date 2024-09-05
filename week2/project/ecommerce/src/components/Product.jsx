@@ -26,9 +26,9 @@ const Product = () => {
         error ? <h1>There was an error fetching product</h1> :
         product ? (
             <div className="product">
+                <h1>{product.title}</h1>
                 <p>{product.description}</p>
                 <img className="product-img" src={product.image} alt={product.name} />
-                <span>{product.title}</span>
             </div>
         ) : <h1>Loading Product...</h1>
     );
