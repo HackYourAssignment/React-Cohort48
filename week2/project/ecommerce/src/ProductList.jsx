@@ -1,37 +1,42 @@
 //week2/project/ecommerce/src/ProductList.jsx
 import * as React from 'react';
 import {useState, useEffect} from "react";
-
+import {useLoading} from "./hooks/useLoading.js";
+import  {useError} from "./hooks/useError.js";
 
 export const ProductList = ({selectedCategory}) => {
-const [products, setProducts] = useState([]);
-const [error, setError] = useState(null);
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+    const fetchProducts = async () => {
+        try {
+            let url;
+
+            if (selectedCategory) {
+                url = `https://fakestoreapi.com/products/category/${selectedCategory}`;
+            } else {
+                url = 'https://fakestoreapi.com/products';
+            }
+
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(`Failed to fetch products`);
+
+            const data = await response.json();
+            setProducts(data);
+        } catch (error) {
+            setError(error.message);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                let url;
-
-                if (selectedCategory) {
-                    url = `https://fakestoreapi.com/products/category/${selectedCategory}`;
-                } else {
-                    url = 'https://fakestoreapi.com/products';
-                }
-
-                const response = await fetch(url);
-                if (!response.ok) throw new Error(`Failed to fetch products`);
-
-                const data = await response.json();
-                setProducts(data);
-            } catch (error) {
-                setError(error.message);
-            }
-        };
-
         fetchProducts();
     }, [selectedCategory]);
 
 
+    if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error}</p>;
 
     return (

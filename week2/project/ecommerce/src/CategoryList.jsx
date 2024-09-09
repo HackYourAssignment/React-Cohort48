@@ -2,13 +2,15 @@
 import React, {useEffect, useState} from 'react';
 import { ProductList } from './ProductList';
 
+
 export const CategoryList = () => {
     const [categories, setCategories] = useState([]);
-    const [error, setError] = useState(null);
     const [selectedCategory, setSelectedCategory] = useState(null); // Initialize state with null to show all products
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
-    useEffect(() => {
-        const fetchCategories = async () => {
+
+    const fetchCategories = async () => {
             try {
                 const response = await fetch(`https://fakestoreapi.com/products/categories`);
                 if (!response.ok) throw new Error(`Failed to fetch categories`);
@@ -17,12 +19,19 @@ export const CategoryList = () => {
                 setCategories(data);
             } catch (error) {
                 setError(error.message);
+            } finally {
+                setLoading(false);
             }
-        };
+    };
 
+
+    useEffect(() => {
         fetchCategories();
     }, []);
 
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error}</p>;
 
     const handleCategoryClick = (category) => {
         if (selectedCategory === category) {
@@ -35,6 +44,7 @@ export const CategoryList = () => {
     };
 
 
+    if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error}</p>;
 
     return (

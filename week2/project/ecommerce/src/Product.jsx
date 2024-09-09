@@ -1,28 +1,36 @@
 //week2/project/ecommerce/src/Product.jsx
 import React, {useState, useEffect} from 'react';
+import {useParams} from "react-router-dom";
+import {useLoading} from "./hooks/useLoading.js";
+import  {useError} from "./hooks/useError.js";
 
 export const Product = () => {
-
+    const {id} = useParams();
     const [product, setProduct] = useState(null);
-    const [error, setError] = useState(null);
+
+    const fetchProductDetail = async () => {
+        try {
+            const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+            if (!response.ok) throw new Error('Failed to fetch product details');
+
+            const data = await response.json();
+            setProduct(data);
+        } catch (error) {
+            setError(error.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const loading = useLoading(fetchProductDetail);
+    const error = useError(fetchProductDetail);
 
     useEffect(() => {
-        const fetchProductDetail = async () => {
-            try {
-                const response = await fetch(`https://fakestoreapi.com/products/${id}`);
-                if (!response.ok) throw new Error('Failed to fetch product details');
-
-                const data = await response.json();
-                setProduct(data);
-            } catch (error) {
-                setError(error.message);
-            }
-        };
-
         fetchProductDetail();
     }, [id]);
 
 
+    if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error}</p>;
     if (!product) return null;
 
