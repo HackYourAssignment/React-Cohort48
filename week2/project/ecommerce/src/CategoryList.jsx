@@ -1,10 +1,28 @@
 //week1/project/ecommerce/src/CategoryList.jsx
-import React, { useState } from 'react';
-import categories from './fake-data/all-categories.js';
+import React, {useEffect, useState} from 'react';
 import { ProductList } from './ProductList';
 
 export const CategoryList = () => {
+    const [categories, setCategories] = useState([]);
+    const [error, setError] = useState(null);
     const [selectedCategory, setSelectedCategory] = useState(null); // Initialize state with null to show all products
+
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const response = await fetch(`https://fakestoreapi.com/products/categories`);
+                if (!response.ok) throw new Error(`Failed to fetch categories`);
+
+                const data = await response.json();
+                setCategories(data);
+            } catch (error) {
+                setError(error.message);
+            }
+        };
+
+        fetchCategories();
+    }, []);
+
 
     const handleCategoryClick = (category) => {
         if (selectedCategory === category) {
@@ -16,6 +34,8 @@ export const CategoryList = () => {
         }
     };
 
+
+    if (error) return <p>Error: {error}</p>;
 
     return (
         <div>
