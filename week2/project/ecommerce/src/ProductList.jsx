@@ -1,8 +1,7 @@
 //week2/project/ecommerce/src/ProductList.jsx
 import * as React from 'react';
 import {useState, useEffect} from "react";
-import {useLoading} from "./hooks/useLoading.js";
-import  {useError} from "./hooks/useError.js";
+
 
 export const ProductList = ({selectedCategory}) => {
     const [products, setProducts] = useState([]);

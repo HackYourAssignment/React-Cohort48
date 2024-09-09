@@ -30,9 +30,6 @@ export const CategoryList = () => {
     }, []);
 
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error}</p>;
-
     const handleCategoryClick = (category) => {
         if (selectedCategory === category) {
             // If the clicked category is already selected, deselect it

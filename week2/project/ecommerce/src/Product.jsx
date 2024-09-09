@@ -1,12 +1,13 @@
 //week2/project/ecommerce/src/Product.jsx
 import React, {useState, useEffect} from 'react';
 import {useParams} from "react-router-dom";
-import {useLoading} from "./hooks/useLoading.js";
-import  {useError} from "./hooks/useError.js";
+
 
 export const Product = () => {
     const {id} = useParams();
     const [product, setProduct] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     const fetchProductDetail = async () => {
         try {
@@ -22,8 +23,6 @@ export const Product = () => {
         }
     };
 
-    const loading = useLoading(fetchProductDetail);
-    const error = useError(fetchProductDetail);
 
     useEffect(() => {
         fetchProductDetail();
