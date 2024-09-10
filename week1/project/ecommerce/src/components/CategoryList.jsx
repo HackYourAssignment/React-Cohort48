@@ -25,7 +25,7 @@ export const CategoryList = () => {
             {categories.map((category, index) => (
                 <Button
                     key={index}
-                    label={removeFake(category)} {/*removeFake() removes 'fake' from the text*/}
+                    label={removeFake(category)} /*removeFake() removes 'fake' from the text*/
                     isSelected={selectedCategory === category}
                     onClick={() => handleCategoryClick(category)} // Handle category click
 
