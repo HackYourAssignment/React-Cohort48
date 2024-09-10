@@ -3,9 +3,11 @@ import React from 'react';
 
 export const Button = ({label, isSelected, onClick}) => {
   return (
-    <button>
+    <button
         onClick={onClick}
-        className={isSelected ? 'active' : ''} {/*Apply active class if selected*/}
+        className={isSelected ? 'active' : ''}
+    >
+        {label}
     </button>
   );
 };

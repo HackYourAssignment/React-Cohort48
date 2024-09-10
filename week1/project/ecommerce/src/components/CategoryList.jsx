@@ -20,12 +20,12 @@ export const CategoryList = () => {
 
 
     return (
+        //Category selection buttons
         <div>
-            {/* Category selection buttons */}
             {categories.map((category, index) => (
                 <Button
                     key={index}
-                    label={removeFake(category)} /*removeFake() removes 'fake' from the text*/
+                    label={removeFake(category)} //removeFake() removes 'fake' from the text
                     isSelected={selectedCategory === category}
                     onClick={() => handleCategoryClick(category)} // Handle category click
 
