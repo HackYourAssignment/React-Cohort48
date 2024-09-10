@@ -1,7 +1,9 @@
 //week1/project/ecommerce/src/CategoryList.jsx
 import React, { useState } from 'react';
-import categories from './fake-data/all-categories.js';
-import { ProductList } from './ProductList';
+import categories from '../fake-data/all-categories.js';
+import {Button} from "./Button.jsx";
+import { ProductList } from './ProductList.jsx';
+import {removeFake} from "../utils/removeFake.js";
 
 export const CategoryList = () => {
     const [selectedCategory, setSelectedCategory] = useState(null); // Initialize state with null to show all products
@@ -21,13 +23,13 @@ export const CategoryList = () => {
         <div>
             {/* Category selection buttons */}
             {categories.map((category, index) => (
-                <button
+                <Button
                     key={index}
+                    label={removeFake(category)} {/*removeFake() removes 'fake' from the text*/}
+                    isSelected={selectedCategory === category}
                     onClick={() => handleCategoryClick(category)} // Handle category click
-                    className={selectedCategory === category ? 'active' : ''}
-                >
-                    {category}
-                </button>
+
+                />
             ))}
 
             {/* ProductList renders products based on the selected category */}

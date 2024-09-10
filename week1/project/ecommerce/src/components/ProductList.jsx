@@ -1,6 +1,7 @@
 //week1/project/ecommerce/src/ProductList.jsx
 import * as React from 'react';
-import products from './fake-data/all-products.js';
+import products from '../fake-data/all-products.js';
+import {removeFake} from "../utils/removeFake.js";
 
 export const ProductList = ({selectedCategory}) => {
     let filteredProducts;
@@ -23,7 +24,7 @@ export const ProductList = ({selectedCategory}) => {
             {filteredProducts.map((product) => (
                 <div key={product.id} className="product">
                     <img src={product.image} alt={product.title} />
-                    <h2>{product.title}</h2>
+                    <h2>{removeFake(product.title)}</h2> {/*removeFake() removes 'fake' from the text*/}
                     <p>${product.price}</p>
                 </div>
             ))}
