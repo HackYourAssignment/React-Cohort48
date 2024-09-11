@@ -2,8 +2,8 @@ import { useState } from 'react'
 import './App.css'
 import categories from './fake-data/all-categories.js'
 import products from './fake-data/all-products.js'
-import Categories from './categories.jsx'
-import Products from './products.jsx'
+import Categories from './Categories.jsx'
+import Products from './Products.jsx'
 
 
 
