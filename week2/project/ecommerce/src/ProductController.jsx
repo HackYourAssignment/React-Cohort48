@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
+
+
 import { useState, useEffect } from "react";
 import ProductList from "./ProductList";
 
@@ -21,6 +21,7 @@ const ProductsController = ({ selectedCategory }) => {
       setProducts(data);
     } catch (error) {
       setError("Failed to fetch products.");
+      setError(error);
     } finally {
       setLoading(false);
     }

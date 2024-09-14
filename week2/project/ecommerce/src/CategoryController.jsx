@@ -1,13 +1,13 @@
-/* eslint-disable no-unused-vars */
-import { useState, useEffect } from "react";
+
+import { useEffect, useState } from "react";
 import CategoryList from "./CategoryList";
 import ProductController from "./ProductController";
 
 const categoryUrl = "https://fakestoreapi.com/products/categories";
 
-const CategoryController = () => {
+const CategoryController = ({ selectedCategory, handleCategoryChange }) => {
+  
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -19,20 +19,20 @@ const CategoryController = () => {
       setCategories(data);
     } catch (error) {
       setError("Failed to fetch categories.");
+      setError(error);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-  };
 
   useEffect(() => {
     fetchCategories();
   }, []);
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
+
   return (
     <div>
       <h1 id="page-title">Products</h1>

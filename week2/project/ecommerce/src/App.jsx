@@ -5,11 +5,11 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ProductDetail from "./ProductDetail.jsx";
 
 function App() {
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null)
 
   const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-  };
+    setSelectedCategory(category)
+  }
 
   return (
     <Router>
