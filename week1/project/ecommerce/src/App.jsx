@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
-import './App.css';
-import ProductList from './ProductList';
-import CategoryList from './CategoryList';
+import './styles/App.css';
+import ProductList from './components/ProductList';
+import CategoryList from './components/CategoryList';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
