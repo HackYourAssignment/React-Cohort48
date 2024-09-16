@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './App.css';
-import ProductList from './ProductList';
+import './styles/App.css';
+import ProductList from './component/ProductList';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ProductDetail from './ProductDetail';
+import ProductDetail from './component/ProductDetail';
 
 
 

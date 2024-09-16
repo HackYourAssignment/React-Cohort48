@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React  from 'react';
-import categories from './all-categories.js';
+import categories from '../data/all-categories.js';
 
 
 const CategoryList = ({ selectedCategory, onSelectCategory }) => {
