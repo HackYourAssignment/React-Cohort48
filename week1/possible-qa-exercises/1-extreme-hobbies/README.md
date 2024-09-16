@@ -13,4 +13,4 @@ const hobbies = ["Surfing", "Rock climbing", "Mountain biking", "Breakdancing"];
 3. Put the `hobbies` variable into the `<HobbyList>` component.
 4. In the `return` statement of the `<HobbyList>` use the `map()` function to return an instance of `<Hobby>` for every hobby in the array
 5. Pass down the hobby string as a `prop` to the `<Hobby>` component (don't forget to add the `key` prop as well!)
-6. Test out if it works by importing it into the top level component, which in this case is `<App>`
+6. Test out if it works by importing it into the top level component, which in this case is `<Home>`
