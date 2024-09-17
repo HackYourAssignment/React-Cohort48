@@ -1,3 +1,3 @@
 # Ecommerce project
 
-Published website: https://clinquant-fairy-f5ba24.netlify.app
+Published website: https://curious-kitsune-0b9569.netlify.app
