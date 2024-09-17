@@ -1,33 +1,12 @@
-//week1/project/ecommerce/src/CategoryList.jsx
+//week3/project/ecommerce/src/CategoryList.jsx
 import React, {useEffect, useState} from 'react';
-import { ProductList } from './ProductList';
+import { ProductList } from './ProductList.jsx';
+import {useFetch} from "../hooks/useFetch.js";
 
 
 export const CategoryList = () => {
-    const [categories, setCategories] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState(null); // Initialize state with null to show all products
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-
-
-    const fetchCategories = async () => {
-            try {
-                const response = await fetch(`https://fakestoreapi.com/products/categories`);
-                if (!response.ok) throw new Error(`Failed to fetch categories`);
-
-                const data = await response.json();
-                setCategories(data);
-            } catch (error) {
-                setError(error.message);
-            } finally {
-                setLoading(false);
-            }
-    };
-
-
-    useEffect(() => {
-        fetchCategories();
-    }, []);
+    const { data: categories, loading, error } = useFetch(`https://fakestoreapi.com/products/categories`);
+    const [selectedCategory, setSelectedCategory] = useState(null);
 
 
     const handleCategoryClick = (category) => {
@@ -47,7 +26,7 @@ export const CategoryList = () => {
     return (
         <div>
             {/* Category selection buttons */}
-            {categories.map((category, index) => (
+            {categories && categories.map((category, index) => (
                 <button
                     key={index}
                     onClick={() => handleCategoryClick(category)} // Handle category click

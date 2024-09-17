@@ -1,4 +1,4 @@
-//week2/project/ecommerce/src/App.jsx
+//week3/project/ecommerce/src/App.jsx
 import * as React from 'react';
 import {BrowserRouter as Router} from "react-router-dom";
 import './App.css';
