@@ -1,0 +1,34 @@
+.active {
+  background-color: #ccc;
+  color: white;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, auto); /* 4 columns */
+  gap: 20px; /* space between grid items */
+  grid-auto-rows: minmax(100px, auto); /* each row adjusts to fit its content */
+  margin: 20px;
+}
+
+.product {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 10px; /* Space between the image and the text */
+}
+
+.product h2 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.product p {
+  margin-bottom: 5px;
+}

@@ -5,7 +5,7 @@ Can you make a hook that takes a user input and copies it to their computer's cl
 1. Create a new application via `npm create vite`
 2. Add a new component, with a simple text field the user can type in.
 3. Add another component consisting of a button.
-4. Store the user's entry. (Bonus question: How should you store this value? In the component? Context API? App.js?)
+4. Store the user's entry. (Bonus question: How should you store this value? In the component? Context API? Home.js?)
 5. It's time to make our hook!
 
 - Create a `hooks` folder in your project, and inside create a file called `useCopy.js`.

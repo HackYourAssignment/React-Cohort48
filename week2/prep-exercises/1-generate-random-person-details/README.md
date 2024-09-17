@@ -23,10 +23,10 @@ Always start with a little research:
 
 Let's focus on getting the data into our app first, we'll worry about the UI later.
 
-1. In the `App` component, create a state variable called `person` that is initialized with null.
+1. In the `Home` component, create a state variable called `person` that is initialized with null.
 2. Now create a function called `getPerson`. The purpose of this function is to make an API call to `https://www.randomuser.me/api?results=1` and put the resulting JSON in the `person` state.
 3. Create a `useEffect` hook that will call the `getPerson` function just once! (remember the dependency array).
-4. At this point you can add a `console.log` of the `person` object in your `App` component and see if you did the above steps correctly. Adjust where needed!
+4. At this point you can add a `console.log` of the `person` object in your `Home` component and see if you did the above steps correctly. Adjust where needed!
 5. Finally, create a simple `<ul>` element with `<li>` children that show the `first name`, `last name` and `email` fields on the page. Remember that initially the `person` state variable is null, so add a check that if the person is null you do not render anything.
 6. Run your app and check that some information is shown on the screen!
 
@@ -36,14 +36,14 @@ As always, once you have something new done it is time to think about refactorin
 
 So never skip this step! Let's see:
 
-### 4.1 Cleaning up the App component
+### 4.1 Cleaning up the Home component
 
-The most obvious problem here is that we wrote everything in our `App` component. The `App` component is the entry point of your application and should generally not contain any logic. So lets fix that:
+The most obvious problem here is that we wrote everything in our `Home` component. The `Home` component is the entry point of your application and should generally not contain any logic. So lets fix that:
 
 1. Create a `PersonController` component and move the `getPerson` function, the `useEffect` and the `person` state to that component.
 2. Let's create a `Person` component and move the `<ul>` rendering inside of that component. You will need to create a prop in the `Person` component for the `person` object. Also move your `null` check to that component.
 3. Now in the `PersonController` component, return the `Person` component sending in the `person` state as the prop you just created.
-4. In the `App` component you can just render a `PersonController` component.
+4. In the `Home` component you can just render a `PersonController` component.
 5. Check that everything works again!
 
 This is called the `Controller` pattern in `React` and is commonly used to separate our logic from our rendering. By doing this you make it easier to know what component does what and isolate the responsibilities. By isolating you make it easier to debug, to test and to read. A win/win/win!

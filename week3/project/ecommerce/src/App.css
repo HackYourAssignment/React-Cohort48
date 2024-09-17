@@ -1,0 +1,62 @@
+/*week3/project/ecommerce/src/App.css*/
+.active {
+  background-color: #ccc;
+  color: white;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, auto); /* 4 columns */
+  gap: 20px; /* space between grid items */
+  grid-auto-rows: minmax(100px, auto); /* each row adjusts to fit its content */
+  margin: 20px;
+}
+
+.product {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.product h2 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.product p {
+  margin-bottom: 5px;
+}
+
+/*Product Card-----------------------------------------------------------------*/
+.product-card {
+  position: relative;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.product-image-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.product-image-container .product-image {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 250px;
+  object-fit: contain;
+}
+
+.product-image-container .favorite-icon {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  width: 20px !important;
+  cursor: pointer;
+  z-index: 2;
+}
