@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 2rem;
+
+}
+
+
+.app{
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 1rem;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  list-style-type: none;
+}
+
+.product-item {
+  flex: 1 1 30%;
+
+}
+
+.product{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  padding: 1rem;
+}
+
+.product-img{
+  width: 18rem;
+  height: auto;
+  object-fit: contain;
+}
+
+.categories{
+  display: flex;
+  gap: 1rem;
+}
+
+.category{
+  padding: 0.5rem .5rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.category-selected{
+  background-color: #cecece;
+}
+
+.heart-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
