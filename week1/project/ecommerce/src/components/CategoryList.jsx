@@ -1,3 +1,4 @@
+import React from 'react';
 
 const CategoryList = ({ categories, selectedCategory, handleCategoryChange }) => {
     return (
