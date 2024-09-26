@@ -1,18 +1,21 @@
 import React, { useContext, useState } from 'react';
-import { Context } from './context';
+import { Context } from '../context/context';
 import { Link } from 'react-router-dom';
-import useFetch from './useFetch'; 
+import useFetch from '../hook/useFetch'; 
+import FavoriteButton from './FavoriteButton';
 
 const ProductList = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const { favourites, toggleFavorite } = useContext(Context);
+  console.log(favourites, toggleFavorite);
+
 
   const url = selectedCategory === 'all' 
     ? 'https://fakestoreapi.com/products' 
     : `https://fakestoreapi.com/products/category/${selectedCategory}`;
   
-  const { data: products, loading, error } = useFetch(url); // Use the custom hook
-  const { data: categories } = useFetch('https://fakestoreapi.com/products/categories'); // Fetch categories
+  const { data: products, loading, error } = useFetch(url); 
+  const { data: categories } = useFetch('https://fakestoreapi.com/products/categories'); 
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
@@ -49,9 +52,7 @@ const ProductList = () => {
                   <h5 className="card-title">{product.title}</h5>
                 </div>
               </Link>
-              <button onClick={() => toggleFavorite(product.id)}>
-                {favourites.includes(product.id) ? '❤️' : '🤍'}
-              </button>
+              <FavoriteButton productId={product.id} />
             </div>
           </div>
         ))}

@@ -5,7 +5,7 @@ import ProductList from './component/ProductList';
 import ProductDetail from './component/ProductDetail';
 import FavouritesPage from './component/FavouritesPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Provider } from './component/context';
+import { Provider } from './context/context';
 
 
 
@@ -15,8 +15,8 @@ function App() {
     <Provider>
       <Router>
         <div>
-          <nav>
-            <Link to="/">Home</Link> | 
+          <nav className="nav-links">
+          <Link to="/">Home</Link>{'|'}
             <Link to="/favourites">Favourites</Link>
           </nav>
           <Routes>

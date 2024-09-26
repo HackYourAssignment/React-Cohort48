@@ -1,9 +1,19 @@
 /* eslint-disable react/prop-types */
-import React  from 'react';
-import categories from '../data/all-categories.js';
+import React , {useState , useEffect}  from 'react';
 
 
 const CategoryList = ({ selectedCategory, onSelectCategory }) => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    fetch(`https://fakestoreapi.com/products/category/${selectedCategory}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setCategories(data.categories);
+      })
+      .catch((error) => console.error('Error fetching categories:', error));
+  }, [selectedCategory]);
+
   return (
     <div>
       {categories.map((categoryName, index) => {

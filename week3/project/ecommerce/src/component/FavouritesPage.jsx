@@ -1,5 +1,5 @@
 import React,{useContext , useEffect, useState} from "react";
-import {Context} from './context';
+import {Context} from '../context/context';
 import {Link} from 'react-router-dom';
 
 const FavouritesPage = () =>{
