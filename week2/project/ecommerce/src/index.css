@@ -1,0 +1,108 @@
+/* General styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.category-list {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.category-list button {
+  padding: 10px 15px;
+  background-color: #e0e0e0;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.category-list button.active,
+.category-list button:hover {
+  background-color: #1976d2;
+  color: white;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  padding: 20px;
+}
+
+.product-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  max-width: 300px;
+  flex: 1 1 calc(25% - 40px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  margin: 20px;
+  transition: transform 0.3s ease;
+}
+
+/* Product card image styling */
+.product-card img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Product card title and text */
+.product-card h1 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.product-card p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Hover effect on product cards */
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive styling for mobile screens */
+@media (max-width: 768px) {
+  .product-card {
+    flex: 1 1 calc(50% - 20px);
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .product-card img {
+    max-width: 80%; /* Reduce image size for mobile */
+    margin: 0 auto 10px; /* Center the image */
+  }
+
+  .product-card h1 {
+    font-size: 1rem; /* Smaller text size for mobile */
+  }
+
+  .product-card p {
+    font-size: 0.8rem; /* Smaller text size for mobile */
+  }
+}
