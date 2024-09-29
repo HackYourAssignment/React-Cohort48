@@ -42,9 +42,7 @@ The app uses data from [TheMealDB](https://www.themealdb.com).
 
 - Meals by category: `/filter.php?c=`
 - Meal details: `/lookup.php?i=`
-## Future Ideas
 
-- Add tests with Jest
-- Improve the design of the app
-- Add login for users
-- The current design is inspired by the **KFC** website for its bold colors and clean layout.
+## Design Inspiration
+
+The current design is inspired by the **KFC** website for its bold colors and clean layout
