@@ -56,5 +56,28 @@ describe("Categories", () => {
     // 3. Check that that category is selected
     // 4. Click a different category
     // 5. Check that only the new category is selected
+
+    cy.get('[data-testid="categories-list"]').within(()=>{
+      cy.get('[data-selected="false"]').should("have.length", 4);
+    });
+
+    // click on one category
+    cy.get('[data-elementid="electronics"]').click();
+
+    // just check that the category 
+    cy.get('[data-testid="categories-list"]').within(() => {
+      cy.get('[data-selected="true"]').should("have.length", 1);
+      cy.get('[data-selected="true"]').should("contain.text", "electronics");
+    });
+//  click on one category
+    cy.get('[data-elementid="jewelery"]').click();
+
+
+    // just check that the category
+    cy.get('[data-testid="categories-list"]').within(() => {
+      cy.get('[data-selected="true"]').should("have.length", 1);
+      cy.get('[data-selected="true"]').should("contain.text", "jewelery");
+      cy.get('[data-selected="false"]').should("have.length", 3);
+    });
   });
 });

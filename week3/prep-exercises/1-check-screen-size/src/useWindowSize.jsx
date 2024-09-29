@@ -1,0 +1,25 @@
+import { useState, useEffect, useDebugValue } from "react";
+
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight
+  });
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    return() => window.removeEventListener('resize', handleResize);
+  },[]);
+
+  useDebugValue(`width: ${windowSize.width}, height: ${windowSize.height}`);
+
+  return windowSize;
+}
+ export default useWindowSize;
