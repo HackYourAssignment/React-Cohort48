@@ -14,11 +14,11 @@ export const FavouritesProvider = ({ children }) => {
     const [favourites, setFavourites] = React.useState([]);
 
     const addToFavourites = (id) => {
-        setFavourites([...favourites, id]);
+        setFavourites([...new Set([...favourites, id])]);
     }
 
     const removeFromFavourites = (id) => {
-        setFavourites(favourites.filter(item => item.id !== id));
+        setFavourites(favourites.filter(favouriteId => favouriteId !== id));
     }
 
     return (

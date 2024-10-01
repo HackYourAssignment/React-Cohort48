@@ -7,23 +7,19 @@ import { useFavourites } from "./favouritesContext";
 const Products = ({ products }) => {
     const { favourites, addToFavourites, removeFromFavourites } = useFavourites();
 
-    const favouritesArray = favourites.map((favourite) => favourite.id);
-
     const isFavourite = (id) => {
-        if (favouritesArray.includes(id)) {
+        if (favourites.includes(id)) {
             return true;
         }
         return false;
     }
-
-    console.log(favouritesArray);
 
 
     const handleFavouriteClick = (product) => {
         if (isFavourite(product.id)) {
             removeFromFavourites(product.id);
         } else {
-            addToFavourites(product);
+            addToFavourites(product.id);
         }
     }
 
@@ -38,7 +34,7 @@ const Products = ({ products }) => {
                 alt={isFavourite(product.id) ? "Remove from favorites" : "Add to favorites"}
                 className="heart-icon"
                 />
-          </div>
+                </div>
                 <Link to={`/product/${product.id}`} > 
                 <div className="product">
                     <img className="product-img" src={product.image} alt={product.name} />
