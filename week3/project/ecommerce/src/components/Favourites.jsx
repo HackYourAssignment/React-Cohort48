@@ -8,7 +8,7 @@ import useFetch from '../hooks/useFetch';
 const Favourites = () => {
 
     const { favourites, removeFromFavourites } = useFavourites();
-    const productsApiUrl = 'https://fakesto``reapi.com/products';
+    const productsApiUrl = 'https://fakestoreapi.com/products';
     const { data: products, loading, error } = useFetch(productsApiUrl);
 
     const handleFavouriteClick = (product) => {
