@@ -8,7 +8,7 @@ import useFetch from '../hooks/useFetch';
 const Favourites = () => {
 
     const { favourites, removeFromFavourites } = useFavourites();
-    const productsApiUrl = 'https://fakestoreapi.com/products';
+    const productsApiUrl = 'https://fakesto``reapi.com/products';
     const { data: products, loading, error } = useFetch(productsApiUrl);
 
     const handleFavouriteClick = (product) => {
@@ -33,7 +33,6 @@ const Favourites = () => {
             <p>No favourited products.</p>
             ) : (
             currentFavourites.map((favouriteItem, id) => (
-                console.log(favouriteItem),
                 <li key={id} className="product-item">
                 <img className="heart-icon" src={heartSolid} alt="Remove from favourites"  onClick={() => handleFavouriteClick(favouriteItem)}/>
                     <Link to={`/product/${favouriteItem.id}`}>
