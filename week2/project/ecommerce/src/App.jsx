@@ -2,17 +2,17 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ProductList from "./components/ProductList";
 import CategoryList from "./components/CategoryList";
-import ProductDetails from "./components/ProductDetails"; // Add this new component
+import ProductDetails from "./components/ProductDetails"; 
 import './App.css';
 
 function App() {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState('all'); 
+  const [loading, setLoading] = useState(false);   
+  const [categoryError, setCategoryError] = useState(null);
+  const [productError, setProductError] = useState(null);
 
-  // Fetch categories and products
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -20,7 +20,7 @@ function App() {
         const data = await response.json();
         setCategories(['all', ...data]);
       } catch (err) {
-        setError('Failed to load categories');
+        setCategoryError('Failed to load categories');
       }
     };
 
@@ -39,17 +39,20 @@ function App() {
         const data = await response.json();
         setProducts(data);
       } catch (err) {
-        setError('Failed to load products');
+        setProductError('Failed to load products');
       } finally {
         setLoading(false);
       }
     };
 
-    fetchProducts();
+    if (selectedCategory) {
+      fetchProducts();
+    }
   }, [selectedCategory]);
 
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
+    setProductError(null);
   };
 
   return (
@@ -65,13 +68,14 @@ function App() {
                   selectedCategory={selectedCategory}
                   onSelectCategory={handleCategorySelect}
                 />
+                {categoryError && <p>{categoryError}</p>}
                 {loading && <p>Loading...</p>}
-                {error && <p>{error}</p>}
+                {productError && <p>{productError}</p>}
                 <ProductList products={products} />
               </>
             }
           />
-          <Route path="/product/:id" element={<ProductDetails />} /> {/* Add ProductDetails route */}
+          <Route path="/product/:id" element={<ProductDetails />} />
         </Routes>
       </div>
     </Router>
