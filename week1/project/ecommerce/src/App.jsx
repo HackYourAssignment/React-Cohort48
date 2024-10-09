@@ -7,9 +7,7 @@ import categories from "./fake-data/all-categories.js";
 function App() {
   const [selectedCategory, setSelectedCategory] = useState('');
 
-  // Function to handle category selection
   const handleCategorySelect = (category) => {
-    console.log('Selected Category:', category); // Debugging log
     setSelectedCategory(category);
   };
 
@@ -20,14 +18,12 @@ function App() {
 
   return (
     <div className="App">
-      {/* Display CategoryList at the top */}
       <CategoryList 
         categories={categories} 
         selectedCategory={selectedCategory} 
         onSelectCategory={handleCategorySelect} 
       />
 
-      {/* Display ProductList below the categories */}
       <ProductList products={filteredProducts} />
     </div>
   );
