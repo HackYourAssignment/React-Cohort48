@@ -18,7 +18,6 @@ function App() {
     setSelectedCategory(category)
     }
   }
-console.log(selectedCategory)
 
   return (
     <FavouritesProvider>
