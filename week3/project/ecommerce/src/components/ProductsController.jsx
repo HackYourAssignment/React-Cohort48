@@ -9,12 +9,14 @@ const ProductsController = ({ selectedCategory }) => {
 
     const { data: products, loading, error } = useFetch(selectedCategory ? `${productsApiUrl}/category/${selectedCategory}` : productsApiUrl);
 
+    if (loading) {
+        return <h1>Loading products...</h1>;
+    }
 
-    const errorFetch = error || !products;
-
-    
+    if (error) {
+        return <h1>There was an error fetching products</h1>;
+    }
     return (
-        errorFetch ? <h1>There was an error fetching products</h1> :
         <Products products={products} selectedCategory={selectedCategory}/>
     );
 }

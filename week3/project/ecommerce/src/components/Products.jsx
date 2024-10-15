@@ -14,7 +14,6 @@ const Products = ({ products }) => {
         return false;
     }
 
-
     const handleFavouriteClick = (product) => {
         if (isFavourite(product.id)) {
             removeFromFavourites(product.id);
@@ -25,7 +24,7 @@ const Products = ({ products }) => {
 
     return (
         <ul className="products">
-        {products.length !== 0 ? 
+        {
         products.map((product) => (
             <li key={product.id} className="product-item">
                 <div className="favorite-icon" onClick={() => handleFavouriteClick(product)}>
@@ -42,7 +41,7 @@ const Products = ({ products }) => {
                 </div>
                 </Link>
             </li>
-        )): <h1>Loading Products...</h1>  }
+        ))}
         </ul>
     );
     }

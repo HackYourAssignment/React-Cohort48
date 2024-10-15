@@ -18,6 +18,7 @@ function App() {
     setSelectedCategory(category)
     }
   }
+console.log(selectedCategory)
 
   return (
     <FavouritesProvider>
@@ -28,6 +29,7 @@ function App() {
           <>
           <NavBar />
           <CategoryController selectedCategory={selectedCategory} handleCategoryClick={handleCategoryClick} />
+          <ProductsController selectedCategory={selectedCategory} />
           </>
         } />
         <Route path='/product/:id' element = { <Product />} />

@@ -1,43 +1,24 @@
 import * as React from 'react';
 import Categories from './categories';
-import ProductsController from './ProductsController';
+import useFetch from '../hooks/useFetch';
 
 const categoryApiUrl = 'https://fakestoreapi.com/products/categories';
 
-const CategoryController = () => {
-    const [categories, setCategories] = React.useState([]);
-    const [selectedCategory, setSelectedCategory] = React.useState(null)
-    const [error, setError] = React.useState(null);
+const CategoryController = ({selectedCategory, handleCategoryClick}) => {
 
-    const fetchCategories = async () => {
-        try {
-            const response = await fetch(categoryApiUrl);
-            const data = await response.json();
-            setCategories(data);
-            setError(null);
-        } catch (error) {
-            console.error('Error fetching categories: ', error);
-            setError(error);
-        }
+    const { data:categories, loading, error } = useFetch(categoryApiUrl);
+
+    if (loading) {
+        return <h1>Loading categories...</h1>;
     }
 
-    const handleCategoryClick = (category) => {
-        if (category === selectedCategory) {
-            setSelectedCategory(null);
-        } else {
-        setSelectedCategory(category)
-        }
-      }
-
-    React.useEffect(() => {
-        fetchCategories();
-    }, []);
+    if (error) {
+        return <h1>There was an error fetching categories</h1>;
+    }
 
     return (
-        error ? <h1>There was an error fetching categories</h1> :
         <>
         <Categories categories={categories} category={selectedCategory} handleCategoryClick={handleCategoryClick} />
-        <ProductsController selectedCategory={selectedCategory} />
         </>
     );
 }
