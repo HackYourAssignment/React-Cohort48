@@ -5,6 +5,7 @@ const Product = () => {
     const { id } = useParams();
     const [product, setProduct] = React.useState(null);
     const [error, setError] = React.useState(null);
+    const [loading, setLoading] = React.useState(true);
 
     const fetchProduct = async () => {
         try {
@@ -12,9 +13,11 @@ const Product = () => {
             const data = await response.json();
             setProduct(data);
             setError(null);
+            setLoading(false);
         } catch (error) {
             console.error('Error fetching product: ', error);
             setError(error);
+            setLoading(false);
         }
     }
 
@@ -22,15 +25,20 @@ const Product = () => {
         fetchProduct();
     }, [id]);
 
+    if (loading) {
+        return <h1>Loading Product...</h1>
+    }
+
+    if (error) {
+        return <h1>There was an error fetching the product</h1>
+    }
+
     return (
-        error ? <h1>There was an error fetching product</h1> :
-        product ? (
             <div className="product">
                 <h1>{product.title}</h1>
                 <p>{product.description}</p>
                 <img className="product-img" src={product.image} alt={product.name} />
             </div>
-        ) : <h1>Loading Product...</h1>
     );
 }
 
