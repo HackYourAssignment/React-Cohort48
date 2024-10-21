@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useFavourites } from './favouritesContext';
-import NavBar from './NavBar';
 import heartSolid from "../assets/heart-solid.svg";
 import { Link } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
@@ -27,7 +26,6 @@ const Favourites = () => {
 
     return (
         <>
-        <NavBar />
             <ul className="products">
             {favourites.length === 0 ? (
             <p>No favourited products.</p>

@@ -21,12 +21,14 @@ function App() {
 
   return (
     <FavouritesProvider>
+      <>
       <h1>Products</h1>
+      </>
     <Router>
+    <NavBar />
       <Routes>
         <Route path='/' element={
           <>
-          <NavBar />
           <CategoryController selectedCategory={selectedCategory} handleCategoryClick={handleCategoryClick} />
           <ProductsController selectedCategory={selectedCategory} />
           </>
